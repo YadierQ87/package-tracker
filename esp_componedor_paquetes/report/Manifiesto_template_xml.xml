@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_manifiesto_carga_xml_aduana">
+        <ManifiestoPostal xmlns:eAduana="https://www.aduana.co.cu/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.aduana.co.cu/XMLSchema manifiestoPostal.xsd">
+            <datosXml>
+                <xmlEstructura>Manifiesto Postal</xmlEstructura><!--Obligatorio , esta etiqueta no se modifica-->
+                <xmlVersion>1.0</xmlVersion>
+                <xmlNombre><span t-esc="docs.manifest_xml_name"/></xmlNombre><!--El nombre del archivo xml debe estructurarse asi Manifiesto202008030001PG-->
+                <xmlTipo>MAN_POS</xmlTipo><!--Obligatorio , esta etiqueta no se modifica-->
+                <xmlFecha t-esc="docs.create_date"></xmlFecha><!--Obligatorio , fecha de confeccion del xml-->
+                <xmlDescripcion>INFORMACION ADELANTADA MANIFIESTO DE ENVIO POSTAL ORIGINAL</xmlDescripcion><!--Obligatorio , esta etiqueta no se modifica-->
+            </datosXml>
+            <operador>01001862514</operador><!--Obligatorio , esta etiqueta no se modifica-->
+            <codigoAduana>0302</codigoAduana><!--Obligatorio , esta etiqueta no se modifica-->
+            <agenciaOrigen>PG</agenciaOrigen><!--Obligatorio , IATA del Couriers-->
+            <noGA t-esc="docs.hbl_bl_code"></noGA><!--Obligatorio , Guia aerea o BL hijo para el maritimo-->
+            <noVuelo t-esc="docs.trip_number"></noVuelo><!--Obligatorio , NoVuelo o Barco para el maritimo-->
+            <fechaArribo t-esc="docs.real_arriving_date"></fechaArribo><!--Obligatorio-->
+            <operacion>I</operacion><!--Obligatorio , esta etiqueta no se modifica-->
+            <cantidadBultos t-esc="docs.total_bags"></cantidadBultos><!--Obligatorio , cantidad de bultos que contiene la Guia o BL-->
+            <!-- foreach para los envios -->
+            <envios>
+                <t t-foreach="docs.envoys_total_ids" t-as="envio_total">
+                    <t t-foreach="envio_total.envoy_ids" t-as="envio">
+                        <t t-foreach="envio.packages_ids" t-as="paquete">
+                            <envio>
+                                <noEnvio t-esc="paquete.name"/><!--Obligatorio , codigo del envio-->
+                                <peso t-esc="paquete.weight"/><!--Obligatorio , peso del envio-->
+                                <paisOrigen-Destino t-esc="docs.shipment_origin.country_id.name"/><!--Obligatorio , pais de origen del envio-->
+                                <descripcion t-esc="paquete.description"/><!--Obligatorio-->
+                                <fechaImposicion t-esc="paquete.create_date"/><!--Obligatorio-->
+                                <destinatario>
+                                    <persona>
+                                        <primerNombre t-esc="paquete.destination.name"/><!--Obligatorio-->
+                                        <segundoNombre t-esc="paquete.destination.second_name"/><!--Opcional-->
+                                        <primerApellido t-esc="paquete.destination.first_lastname"/><!--Obligatorio-->
+                                        <segundoApellido t-esc="paquete.destination.second_lastname"/><!--Opcional-->
+                                        <id t-esc="paquete.destination.ci"></id><!--Obligatorio-->
+                                        <nacionalidad t-esc="paquete.destination.nacionality">CUB</nacionalidad><!--Obligatorio-->
+                                        <fechaNacimiento t-esc="paquete.destination.date_of_birth"/><!--Obligatorio-->
+                                    </persona>
+                                    <contacto>
+                                        <contactosTelefonos>
+                                            <telefono>
+                                                <noTelefono t-esc="paquete.destination.phone"/><!--Obligatorio-->
+                                            </telefono>
+                                        </contactosTelefonos>
+                                        <contactosDomicilios>
+                                            <domicilio>
+                                                <calle t-esc="paquete.destination.street"/><!--Obligatorio, calle donde vive la persona -->
+                                                <entreCalle t-esc="paquete.destination.street2"/><!--Opcional , 1ra entre calle donde vive la persona-->
+                                                <yCalle></yCalle><!--Opcional , 2da entre calle donde vive la persona-->
+                                                <no t-esc="paquete.destination.num_house"></no><!--Opcional , numero de la casa-->
+                                                <piso></piso><!--Opcional , piso de la casa-->
+                                                <apto></apto><!--Opcional , numero del apartamento-->
+                                                <provincia>
+                                                    <codigoProvincia t-esc="paquete.destination.city"/><!--Obligatorio, representa el codigo de la provincia , codificador (CoDPA)  Provincias y Municipios de Cuba-->
+                                                    <codigoMunicipio t-esc="paquete.destination.state_id.name" /><!--Obligatorio, representa el codigo del municipio , codificador (CoDPA)  Provincias y Municipios de Cuba-->
+                                                </provincia>
+                                            </domicilio>
+                                        </contactosDomicilios>
+                                    </contacto>
+                                </destinatario>
+                                <remitente>
+                                    <persona>
+                                        <primerNombre t-esc="paquete.sender.name" /><!--Obligatorio-->
+                                        <segundoNombre t-esc="paquete.sender.second_name"  /><!--Opcional-->
+                                        <primerApellido t-esc="paquete.sender.first_lastname"  /><!--Obligatorio-->
+                                        <segundoApellido t-esc="paquete.sender.second_lastname"  /><!--Opcional-->
+                                        <nacionalidad t-esc="paquete.sender.nacionality" /><!--Obligatorio-->
+                                        <fechaNacimiento t-esc="paquete.sender.date_of_birth" /><!--Obligatorio-->
+                                    </persona>
+                                </remitente>
+                            </envio>
+                        </t>
+                    </t>
+                </t>
+            </envios>
+        </ManifiestoPostal>
+    </template>
+
+</odoo>

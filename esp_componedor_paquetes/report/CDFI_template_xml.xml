@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_cdfi_file_xml">
+        <cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cce11="http://www.sat.gob.mx/ComercioExterior11" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/ComercioExterior11 http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior11/ComercioExterior11.xsd"
+                          Version="3.3"
+                          Fecha="2020-11-25T13:39:08"
+                          Serie="E" Folio="1"
+                          FormaPago="06"
+                          CondicionesDePago="30 días"
+                          SubTotal="810999.37" Moneda="MXN"
+                          TipoCambio="1" Total="810999.37"
+                          TipoDeComprobante="I" MetodoPago="PUE"
+                          LugarExpedicion="06500" Certificado="MIIGZDCCBEygAwIBAgIUMDAwMDEwMDAwMDA0MTE0OTkzMTcwDQYJKoZIhvcNAQELBQAwggGyMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJhY2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMR8wHQYJKoZIhvcNAQkBFhBhY29kc0BzYXQuZ29iLm14MSYwJAYDVQQJDB1Bdi4gSGlkYWxnbyA3NywgQ29sLiBHdWVycmVybzEOMAwGA1UEEQwFMDYzMDAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBEaXN0cml0byBGZWRlcmFsMRQwEgYDVQQHDAtDdWF1aHTDqW1vYzEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMV0wWwYJKoZIhvcNAQkCDE5SZXNwb25zYWJsZTogQWRtaW5pc3RyYWNpw7NuIENlbnRyYWwgZGUgU2VydmljaW9zIFRyaWJ1dGFyaW9zIGFsIENvbnRyaWJ1eWVudGUwHhcNMTgwNzExMjEzNTE1WhcNMjIwNzExMjEzNTE1WjCCAQMxLTArBgNVBAMTJEVVUElFUlJFWiBCVVNJTkVTUyBTRVJWSUNFUyBTQSBERSBDVjEtMCsGA1UEKRMkRVVQSUVSUkVaIEJVU0lORVNTIFNFUlZJQ0VTIFNBIERFIENWMS0wKwYDVQQKEyRFVVBJRVJSRVogQlVTSU5FU1MgU0VSVklDRVMgU0EgREUgQ1YxJTAjBgNVBC0THEVCUzE4MDUyM0oyOCAvIFFVTEk2NzA4MjYyUTAxHjAcBgNVBAUTFSAvIFFVTEk2NzA4MjZITkVYUFYwMzEtMCsGA1UECxMkRVVQSUVSUkVaIEJJU0lORVNTIFNFUlZJQ0VTIFNBIERFIENWMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm1H+C8SJ87661X1q7HNp0DKgn15y0tOBfmncesdYEUAZDHNa6Y9C2iV01c6Q2oAMk2IYSqf5QwrY9piRaAGZ/29dyxMD0Z9Z1pRxioHoJckOGJoFiAHCgLnrek4dqvZVMMqoNaiBuxu8G1trX2vTXlpRLWv+a5PP6BGg2owt+O7HmrFagjJJgH/PO5PyUU6cJqj1R/K4UJsAP49x9+6tDrGmKriqEupOgjHJWGtI7Jhc49evwCUbQK6pbhg2cs/kNgc+66L5HGv5/7pAGaT0v4aiP2btKNYASQ26R3XP+/jVhH075UpBWKZqR2etkQqPldvqIbeRrPBuuEtuF6VhNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAgLSpD/Xi9JP4zrt7chDnTRbTGWeWtzIe8+kNlfANWOoJqIWOQ/3AzBv4f7Mjq45TuRcZFAkcBTjgfyzUn0WJC4CEmFDMHcOsGH15WvSdvNy+Q40FdCYlr0KUmjxozwaN1KeeSyN6EuDnqY75xnX4b9vFcLjPhHL3V9QcChuxBumfCze7KDLxv2KCDcNn8U7sZqlDOllFembC7tm+Jv+fFTsD+wGy80nOhiHE/uzW+KdTiTaVsBpuKosQSLErQCROnOWRD71heOc+MAb86F9+bN8GzJi2C/3i+wMJMRR8m5cVAvD/IYAe7G5q9mlNunl8iNhbeUhoJHKJbtDx6oQtEWu8O0Q7WrQUFu2HxhRzxqLqpTs+vq09EGqCNBgy6cKy03rK0ApNcc68uwhKyG7zXLeNu0b6pUB+5hCAe0doNdEfu1q6oNyS4qHrD1oaEleifXJXj8LqguOzhozxGc9CG7D75Sbwo9zZ62EMtL2ykt6Pt86PNXV6b52jSALD938aNinFivvJI8dk53UbZyVhzyZzcbmUL5kLwFMRRepaEnv2TkqIyLtzW7bVj2c8gVclUG2PgHsbH1e2buEgWQX4o4y87oIqkhvMcKeR/pYUqeDJKQAlrlR/eQ1ZfUSUT95cYjugV7WXwhg41XV3riPqDgKZPeLBwGzgTWYEZgJxnrg=" NoCertificado="00001000000411499317" Sello="UvyaeARUETTckhrTuj2T73RzNOFZRwrcUynp148KoUQaw9DMuaObHJeWLmFVPm2JgtYKQcJGKp+B+AljaFJUEZKU4ATDOGATABy1Zw1p9zDE55ByP+8C5o60SDzKb5cVjykZlyTz3dHGSBEArPYg3h2SzD2xxKZe1AnjR+8MR2y6a5Av6UtSoilu/2m+EFs9oxsT4jchw7bzMtjx1r+NlEhd/zIkcIGEP9kX6Ig+tFLDWVCw+DxCkK6iSScKqJqPhPBmoEQgoJXJRSJpvj+4/44Zbfv4OaTssiKXEDsxjqhPxFV9XsbqcCjjRBRdoKwiMS769cjF7YhpstrtRg/gEg=="><cfdi:Emisor Rfc="EBS180523J28" Nombre="EUPIERREZ BUSINESS SERVICES SA DE CV" RegimenFiscal="601" />
+
+            <cfdi:Receptor Rfc="XEXX010101000"
+                           Nombre="AEROVARADERO, S. A."
+                           ResidenciaFiscal="CUB"
+                           NumRegIdTrib="151.4.6301"
+                           UsoCFDI="P01" />
+            <!-- Ciclo para los conceptos (productos en los paquetes)-->
+            <cfdi:Conceptos>
+                <t t-foreach="docs.envoys_total_ids" t-as="envio_total">
+                    <t t-foreach="envio_total.envoy_ids" t-as="envio">
+                        <t t-foreach="envio.packages_ids" t-as="paquete">
+                            <t t-foreach="paquete.sale_item_ids" t-as="articulo">
+                                <cfdi:Concepto t-att="{'Cantidad':articulo.quantity,
+                                               'Unidad':articulo.item_id.uom_id.name,
+                                               'NoIdentificacion':articulo.id,
+                                               'Descripcion':articulo.name,
+                                               'ValorUnitario':articulo.price_unit,
+                                               'Importe':114,
+                                               'ClaveProdServ':articulo.barcode,
+                                               'ClaveUnidad':'EA'}">
+                                    <cfdi:Impuestos>
+                                        <cfdi:Traslados>
+                                            <cfdi:Traslado
+                                                    t-att="{'Base':114,
+                                                    'Impuesto':articulo.item_id.taxes_id.name
+                                                    'TipoFactor':articulo.item_id.taxes_id.type_tax_use
+                                                    }"
+                                                    Base="114" Impuesto="002" TipoFactor="Exento" />
+                                        </cfdi:Traslados>
+                                    </cfdi:Impuestos>
+                                </cfdi:Concepto>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </cfdi:Conceptos>
+            <!-- Termina aqui Ciclo para los conceptos -->
+
+            <cfdi:Complemento>
+                <cce11:ComercioExterior Version="1.1"
+                                        TipoOperacion="2"
+                                        ClaveDePedimento="A1"
+                                        CertificadoOrigen="1"
+                                        Incoterm="CFR"
+                                        Subdivision="0"
+                                        TipoCambioUSD="20.07"
+                                        TotalUSD="40389.46">
+                    <cce11:Emisor>
+                        <cce11:Domicilio Calle="RIO LERMA"
+                                         NumeroExterior="26"
+                                         Colonia="0919"
+                                         Municipio="015"
+                                         Estado="DIF"
+                                         Pais="MEX"
+                                         CodigoPostal="06500" />
+                    </cce11:Emisor>
+                    <cce11:Receptor>
+                        <cce11:Domicilio
+                                Calle="CARRETERA WAJAY"
+                                NumeroExterior="KM 1 1/2"
+                                Municipio="BOY"
+                                Estado="HAB" Pais="CUB"
+                                CodigoPostal="11300" />
+                    </cce11:Receptor>
+                    <!-- ciclo para las mercancias sale_items en los paquetes -->
+                    <cce11:Mercancias>
+                        <t t-foreach="docs.envoys_total_ids" t-as="envio_total">
+                            <t t-foreach="envio_total.envoy_ids" t-as="envio">
+                                <t t-foreach="envio.packages_ids" t-as="paquete">
+                                    <t t-foreach="paquete.sale_item_ids" t-as="articulo">
+                                        <cce11:Mercancia t-att="{'NoIdentificacion':articulo.id,
+                                                         'FraccionArancelaria':articulo.item_id.fraction_name,
+                                                         'CantidadAduana':articulo.quantity,
+                                                         'UnidadAduana':1,
+                                                         'ValorUnitarioAduana':articulo.item_id.customs_price,
+                                                         'ValorDolares':articulo.item_id.customs_price}">
+                                            <cce11:DescripcionesEspecificas t-att="{'Marca':articulo.item_id.modelo_name}" />
+                                        </cce11:Mercancia>
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                    </cce11:Mercancias>
+                    <!--  Aqui termina ciclo para las mercancias sale_items en los paquetes -->
+                </cce11:ComercioExterior>
+                <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="FFD8AE44-E62F-4460-9D6D-E98C6022CC9C" FechaTimbrado="2020-11-25T13:39:09" RfcProvCertif="SFE0807172W8" SelloCFD="UvyaeARUETTckhrTuj2T73RzNOFZRwrcUynp148KoUQaw9DMuaObHJeWLmFVPm2JgtYKQcJGKp+B+AljaFJUEZKU4ATDOGATABy1Zw1p9zDE55ByP+8C5o60SDzKb5cVjykZlyTz3dHGSBEArPYg3h2SzD2xxKZe1AnjR+8MR2y6a5Av6UtSoilu/2m+EFs9oxsT4jchw7bzMtjx1r+NlEhd/zIkcIGEP9kX6Ig+tFLDWVCw+DxCkK6iSScKqJqPhPBmoEQgoJXJRSJpvj+4/44Zbfv4OaTssiKXEDsxjqhPxFV9XsbqcCjjRBRdoKwiMS769cjF7YhpstrtRg/gEg==" NoCertificadoSAT="00001000000404594081" SelloSAT="VXpWwkS3WSfUWVJEglghZyxfHLM3AjzHFRoarqknk3PLcDkBIYYfnr/9+5Yo5sgPPIwhzLp3Wmql8VXA2WdFrxSfJ+iXiuL6t3NPIpdF6t9OrKgSkZQvK0t7/U2SaAD1grL0Y5kpzfZ2XkTXTwOcq2oJFSUC/Egn/vIa+0uYdYT8WVmuFOWtX+LDgvI6FTDoteoZ9p3ItnWbAchZRGKjXOvvflLjgMxMa6MQedveyUzsw0IwqSslVaemraZWidM3s0JyI3L6Qab24CZr4cmmSVTGFyav1aBn7ABoC96D5Z8qP7OD7e2yRPN+3k28ZQDK9ha6PL72x+02OF7K8uUZPw==" />
+            </cfdi:Complemento>
+        </cfdi:Comprobante>
+    </template>
+</odoo>

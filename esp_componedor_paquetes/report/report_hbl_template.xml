@@ -1,0 +1,2289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- #3(HBL de Carga Transcargo)-->
+        <template id="esp_cmp_report_hbl_embarque_carga">
+            <xpath expr="." position="inside">
+                <link href="/esp_componedor_paquetes/static/css/report_styles2.css" rel="stylesheet"/>
+            </xpath>
+            <field name="header_spacing">2</field>
+            <t t-call="web.html_container">
+                <!--<t t-call="web.internal_layout">-->
+                <br/><!-- #html_container con el logo -->
+                <style type="text/css">
+                    @page {
+                    }
+
+                    table {
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    empty-cells: show
+                    }
+
+                    td, th {
+                    vertical-align: top;
+                    font-size: 10pt;
+                    }
+
+                    h1, h2, h3, h4, h5, h6 {
+                    clear: both;
+                    }
+
+                    ol, ul {
+                    margin: 0;
+                    padding: 0;
+                    }
+
+                    li {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    }
+
+                    /* "li span.odfLiEnd" - IE 7 issue*/
+                    li span. {
+                    clear: both;
+                    line-height: 0;
+                    width: 0;
+                    height: 0;
+                    margin: 0;
+                    padding: 0;
+                    }
+
+                    span.footnodeNumber {
+                    padding-right: 1em;
+                    }
+
+                    span.annotation_style_by_filter {
+                    font-size: 95%;
+                    font-family: Arial;
+                    background-color: #fff000;
+                    margin: 0;
+                    border: 0;
+                    padding: 0;
+                    }
+
+                    span.heading_numbering {
+                    margin-right: 0.8rem;
+                    }
+
+                    * {
+                    margin: 0;
+                    }
+
+                    .ta1 {
+                    writing-mode: lr-tb;
+                    }
+
+                    .ce1 {
+                    font-family: Liberation Sans;
+                    padding: 2.01pt;
+                    }
+
+                    .ce10 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce11 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    }
+
+                    .ce12 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce13 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: right ! important;
+                    margin-left: 0pt;
+                    font-size: 12pt;
+                    }
+
+                    .ce14 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    vertical-align: bottom;
+                    text-align: justify ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce15 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    font-size: 32pt;
+                    font-weight: bold;
+                    }
+
+                    .ce16 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    }
+
+                    .ce17 {
+                    font-family: Liberation Sans;
+                    border-style: none;
+                    padding: 2.01pt;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce18 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce19 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    }
+
+                    .ce2 {
+                    font-family: Liberation Sans;
+                    padding: 2.01pt;
+                    font-weight: bold;
+                    }
+
+                    .ce20 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    }
+
+                    .ce21 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: top;
+                    text-align: right ! important;
+                    margin-left: 0pt;
+                    font-size: 12pt;
+                    }
+
+                    .ce22 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce23 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce24 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce25 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    }
+
+                    .ce26 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce27 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    margin-left: 0pt;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce28 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: top;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 12pt;
+                    }
+
+                    .ce29 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    }
+
+                    .ce3 {
+                    font-family: Liberation Sans;
+                    padding: 2.01pt;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce30 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-style: none;
+                    }
+
+                    .ce31 {
+                    font-family: Liberation Sans;
+                    padding: 2.01pt;
+                    font-size: 12pt;
+                    font-weight: bold;
+                    }
+
+                    .ce32 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-weight: bold;
+                    }
+
+                    .ce33 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce34 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-style: none;
+                    }
+
+                    .ce35 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    }
+
+                    .ce36 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 9pt;
+                    font-weight: normal;
+                    }
+
+                    .ce37 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce38 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    }
+
+                    .ce39 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    }
+
+                    .ce4 {
+                    font-family: Liberation Sans;
+                    padding: 2.01pt;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    font-size: 12pt;
+                    font-weight: bold;
+                    }
+
+                    .ce40 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    font-size: 12pt;
+                    }
+
+                    .ce41 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    font-weight: bold;
+                    }
+
+                    .ce42 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    }
+
+                    .ce43 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    vertical-align: bottom;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce44 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce45 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    }
+
+                    .ce46 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-style: none;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce47 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 12pt;
+                    font-weight: bold;
+                    }
+
+                    .ce48 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 12pt;
+                    font-weight: bold;
+                    }
+
+                    .ce49 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 12pt;
+                    font-weight: bold;
+                    }
+
+                    .ce5 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce50 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 12pt;
+                    font-weight: bold;
+                    }
+
+                    .ce51 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-style: none;
+                    }
+
+                    .ce52 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-style: none;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: top;
+                    font-size: 12pt;
+                    }
+
+                    .ce53 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    }
+
+                    .ce54 {
+                    font-family: Liberation Sans;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #000000;
+                    padding: 2.01pt;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .ce55 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-style: none;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: top;
+                    font-size: 12pt;
+                    }
+
+                    .ce6 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce7 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    border-right-style: none;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: center ! important;
+                    }
+
+                    .ce8 {
+                    font-family: Liberation Sans;
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #000000;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-style: none;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    }
+
+                    .ce9 {
+                    font-family: Liberation Sans;
+                    border-bottom-style: none;
+                    border-left-width: 2px;
+                    border-left-style: solid;
+                    border-left-color: #000000;
+                    padding: 2.01pt;
+                    border-right-width: 2px;
+                    border-right-style: solid;
+                    border-right-color: #000000;
+                    border-top-width: 2px;
+                    border-top-style: solid;
+                    border-top-color: #000000;
+                    vertical-align: middle;
+                    text-align: left ! important;
+                    margin-left: 0pt;
+                    font-size: 9pt;
+                    font-weight: bold;
+                    }
+
+                    .co1 {
+                    width: 180pt;
+                    }
+
+                    .co2 {
+                    width: 144pt;
+                    }
+
+                    .co3 {
+                    width: 72pt;
+                    }
+
+                    .co4 {
+                    width: 90pt;
+                    }
+
+                    .ro1 {
+                    height: 14.66pt;
+                    }
+
+                    .ro2 {
+                    height: 17.01pt;
+                    }
+
+                    .ro3 {
+                    height: 112.2pt;
+                    }
+
+                    .ro4 {
+                    height: 78.6pt;
+                    }
+
+                    .ro5 {
+                    height: 50.4pt;
+                    }
+
+                    .ro6 {
+                    height: 14.4pt;
+                    }
+
+                    /* ODF styles with no properties representable as CSS */
+                    {
+                    }
+                </style>
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <t t-foreach="range(4)" t-as="i">
+                            <div class="page">
+
+                                <style>
+                                    @page {
+                                    }
+
+                                    .page {
+                                    page-break-after: always;
+                                    page-break-inside: avoid;
+                                    }
+
+                                    table {
+                                    border-collapse: collapse;
+                                    border-spacing: 0;
+                                    empty-cells: show
+                                    }
+
+                                    td, th {
+                                    vertical-align: top;
+                                    font-size: 10pt;
+                                    }
+
+                                    h1, h2, h3, h4, h5, h6 {
+                                    clear: both;
+                                    }
+
+                                    ol, ul {
+                                    margin: 0;
+                                    padding: 0;
+                                    }
+
+                                    li {
+                                    list-style: none;
+                                    margin: 0;
+                                    padding: 0;
+                                    }
+
+                                    /* "li span.odfLiEnd" - IE 7 issue*/
+                                    li span. {
+                                    clear: both;
+                                    line-height: 0;
+                                    width: 0;
+                                    height: 0;
+                                    margin: 0;
+                                    padding: 0;
+                                    }
+
+                                    span.footnodeNumber {
+                                    padding-right: 1em;
+                                    }
+
+                                    span.annotation_style_by_filter {
+                                    font-size: 95%;
+                                    font-family: Arial;
+                                    background-color: #fff000;
+                                    margin: 0;
+                                    border: 0;
+                                    padding: 0;
+                                    }
+
+                                    span.heading_numbering {
+                                    margin-right: 0.8rem;
+                                    }
+
+                                    * {
+                                    margin: 0;
+                                    }
+
+                                    .ta1 {
+                                    writing-mode: lr-tb;
+                                    }
+
+                                    .ce1 {
+                                    font-family: Liberation Sans;
+                                    padding: 2.01pt;
+                                    }
+
+                                    .ce10 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce11 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    }
+
+                                    .ce12 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce13 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: right ! important;
+                                    margin-left: 0pt;
+                                    font-size: 12pt;
+                                    }
+
+                                    .ce14 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    vertical-align: bottom;
+                                    text-align: justify ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce15 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    font-size: 32pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce16 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    }
+
+                                    .ce17 {
+                                    font-family: Liberation Sans;
+                                    border-style: none;
+                                    padding: 2.01pt;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce18 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce19 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    }
+
+                                    .ce2 {
+                                    font-family: Liberation Sans;
+                                    padding: 2.01pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce20 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    }
+
+                                    .ce21 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: top;
+                                    text-align: right ! important;
+                                    margin-left: 0pt;
+                                    font-size: 12pt;
+                                    }
+
+                                    .ce22 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce23 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce24 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce25 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    }
+
+                                    .ce26 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce27 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    margin-left: 0pt;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce28 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: top;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 12pt;
+                                    }
+
+                                    .ce29 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    }
+
+                                    .ce3 {
+                                    font-family: Liberation Sans;
+                                    padding: 2.01pt;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce30 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-style: none;
+                                    }
+
+                                    .ce31 {
+                                    font-family: Liberation Sans;
+                                    padding: 2.01pt;
+                                    font-size: 12pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce32 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce33 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce34 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-style: none;
+                                    }
+
+                                    .ce35 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    }
+
+                                    .ce36 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 9pt;
+                                    font-weight: normal;
+                                    }
+
+                                    .ce37 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce38 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    }
+
+                                    .ce39 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    }
+
+                                    .ce4 {
+                                    font-family: Liberation Sans;
+                                    padding: 2.01pt;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    font-size: 12pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce40 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    font-size: 12pt;
+                                    }
+
+                                    .ce41 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce42 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    }
+
+                                    .ce43 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    vertical-align: bottom;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce44 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce45 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    }
+
+                                    .ce46 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-style: none;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce47 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 12pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce48 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 12pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce49 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 12pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce5 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce50 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 12pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce51 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-style: none;
+                                    }
+
+                                    .ce52 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-style: none;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: top;
+                                    font-size: 12pt;
+                                    }
+
+                                    .ce53 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    }
+
+                                    .ce54 {
+                                    font-family: Liberation Sans;
+                                    border-width: 2px;
+                                    border-style: solid;
+                                    border-color: #000000;
+                                    padding: 2.01pt;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .ce55 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-style: none;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: top;
+                                    font-size: 12pt;
+                                    }
+
+                                    .ce6 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce7 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    border-right-style: none;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: center ! important;
+                                    }
+
+                                    .ce8 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-width: 2px;
+                                    border-bottom-style: solid;
+                                    border-bottom-color: #000000;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-style: none;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    }
+
+                                    .ce9 {
+                                    font-family: Liberation Sans;
+                                    border-bottom-style: none;
+                                    border-left-width: 2px;
+                                    border-left-style: solid;
+                                    border-left-color: #000000;
+                                    padding: 2.01pt;
+                                    border-right-width: 2px;
+                                    border-right-style: solid;
+                                    border-right-color: #000000;
+                                    border-top-width: 2px;
+                                    border-top-style: solid;
+                                    border-top-color: #000000;
+                                    vertical-align: middle;
+                                    text-align: left ! important;
+                                    margin-left: 0pt;
+                                    font-size: 9pt;
+                                    font-weight: bold;
+                                    }
+
+                                    .co1 {
+                                    width: 180pt;
+                                    }
+
+                                    .co2 {
+                                    width: 144pt;
+                                    }
+
+                                    .co3 {
+                                    width: 72pt;
+                                    }
+
+                                    .co4 {
+                                    width: 90pt;
+                                    }
+
+                                    .ro1 {
+                                    height: 14.66pt;
+                                    }
+
+                                    .ro2 {
+                                    height: 17.01pt;
+                                    }
+
+                                    .ro3 {
+                                    height: 112.2pt;
+                                    }
+
+                                    .ro4 {
+                                    height: 78.6pt;
+                                    }
+
+                                    .ro5 {
+                                    height: 50.4pt;
+                                    }
+
+                                    .ro6 {
+                                    height: 14.4pt;
+                                    }
+
+                                    /* ODF styles with no properties representable as CSS */
+                                    {
+                                    }
+                                </style>
+                                <link href="/esp_componedor_paquetes/static/css/report_styles2.css" rel="stylesheet"/>
+                                <table border="0" cellspacing="0" cellpadding="0" class="ta1">
+                                    <colgroup>
+                                        <col width="278"/>
+                                        <col width="222"/>
+                                        <col width="111"/>
+                                        <col width="222"/>
+                                        <col width="139"/>
+                                        <col width="139"/>
+                                        <col width="139"/>
+                                        <col width="139"/>
+                                        <col width="278"/>
+                                    </colgroup>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:72pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="7" style="text-align:left;width:144pt; " class="ce4">
+                                            <p>Bill of landing</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="7" style="text-align:left;width:144pt; " class="ce4">
+                                            <p>TRANSPORTADORA
+                                                <t t-esc="o.container_id.shipper.name"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce5">
+                                            <p>SHIPPER:</p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce32">
+                                            <p>F/Agent Name &amp; Ref</p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce47">
+                                            <p>
+                                                <span style="display: block; ">
+                                                    <t t-esc="res_company.partner_id.shipper_initials"/>
+                                                    <t t-esc="o.container_id.shipment_origin.shipper_initials"/>
+                                                    <t t-esc="o.container_id.shipment_destiny.shipper_initials"/>
+                                                    <t t-esc="o.name"/>
+                                                    <!--t t-esc="o.hbl_header"/-->
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>
+                                                <t t-esc="o.sender.name"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" rowspan="13" style="text-align:left;width:90pt; " class="ce33">
+                                            <div id="logoCorresponsal">
+                                                <img t-if="o.container_id.shipper.image_1920"
+                                                     t-att-src="image_data_uri(o.container_id.shipper.image_1920)"
+                                                     class="float-left" alt="Logo Corresponsal" width="189"
+                                                     height="122"/>
+                                            </div>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce48"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce7"> </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>
+                                                <t t-esc="o.sender.full_address"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>PASAPORTE:
+                                                <t t-esc="o.sender.passport"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce25">
+                                            <p>TRANSPORTADORA
+                                                <t t-esc="o.container_id.shipper.name"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>CI:
+                                                <t t-esc="o.sender.ci"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce25">
+                                            <p>
+                                                <t t-esc="o.container_id.shipper.full_address"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce8">
+                                            <p>
+                                                TELEFONO:
+                                                <t t-esc="o.sender.phone"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce25">
+                                            <p>Tel.:
+                                                <t t-esc="o.container_id.shipper.phone"/>
+                                                Cel.:
+                                                <t t-esc="o.container_id.shipper.mobile"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce5">
+                                            <p>CONSIGNEE:</p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>
+                                                <t t-esc="o.destination.name"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6"> </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>
+                                                <t t-esc="o.destination.full_address"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>PASAPORTE:
+                                                <t t-esc="o.destination.passport"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>CI:<t t-esc="o.destination.ci"/>ci
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce49"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro2">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce8">
+                                            <p>TELEFONO:
+                                                <t t-esc="o.destination.phone"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce50"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce9">
+                                            <p>NOTIFY</p>
+                                        </td>
+                                        <td colspan="4" style="text-align:left;width:90pt; " class="ce9">
+                                            <p>FOR DELIVERY PLEASE REFER TO</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce10">
+                                            <p>
+                                                <t t-esc="o.notify.name"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="4" style="text-align:left;width:90pt; " class="ce35">
+                                            <p>
+                                                <t t-esc="o.container_id.forwarder.name"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6"> </td>
+                                        <td colspan="4" style="text-align:left;width:90pt; " class="ce35">
+                                            <p>
+                                                <t t-esc="o.container_id.forwarder.full_address"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>
+                                                <t t-esc="o.notify.full_address"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="4" style="text-align:left;width:90pt; " class="ce35">
+                                            <p>
+                                                <t t-if="len(o.container_id.forwarder.child_ids) > 0">
+                                                    <t t-esc="o.container_id.forwarder.child_ids[0].name"/>
+                                                </t>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>PASAPORTE:
+                                                <t t-esc="o.notify.passport"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="4" style="text-align:left;width:90pt; " class="ce35">
+                                            <p>
+                                                <t t-esc="o.container_id.forwarder.phone"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>CI:
+                                                <t t-esc="o.notify.ci"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="4" style="text-align:left;width:90pt; " class="ce10"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce8">
+                                            <p>TELEFONO:
+                                                <t t-esc="o.notify.phone"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="4" style="text-align:left;width:90pt; " class="ce37"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce9">
+                                            <p>VESSEL</p>
+                                        </td>
+                                        <td style="text-align:left;width:144pt; " class="ce26">
+                                            <p>PORT OF LOADING</p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce9">
+                                            <p>FREIGHT PAYABLE AT</p>
+                                        </td>
+                                        <td colspan="2" rowspan="2" style="text-align:left;width:90pt; " class="ce38">
+                                             
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce11">
+                                            <p>
+                                                <t t-esc="o.container_id.vessel.name"/>
+                                                <t t-esc="o.container_id.trip_number"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:144pt; " class="ce11">
+                                            <p><t t-esc="o.container_id.shipment_origin.name"/>,
+                                                <t t-esc="o.container_id.shipment_origin.country_id.name"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce8">
+                                            <p>
+                                                <t t-esc="o.container_id.freight"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce9">
+                                            <p>PORT OF DISCHARGE</p>
+                                        </td>
+                                        <td style="text-align:left;width:144pt; " class="ce26">
+                                            <p>FINAL DESTINATION</p>
+                                        </td>
+                                        <td colspan="2" rowspan="2" style="text-align:left;width:90pt; " class="ce38">
+                                             
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce9">
+                                            <p>Cont(s). No(s)</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce11">
+                                            <p><t t-esc="o.container_id.shipment_destiny.name"/>,
+                                                <t t-esc="o.container_id.shipment_destiny.country_id.name"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:144pt; " class="ce11">
+                                            <p><t t-esc="o.container_id.shipment_destiny.name"/>,
+                                                <t t-esc="o.container_id.shipment_destiny.country_id.name"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:90pt; " class="ce11">
+                                            <p>1</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce12">
+                                            <p>MARKS AND NUMBERS</p>
+                                        </td>
+                                        <td style="text-align:left;width:72pt; " class="ce12">
+                                            <p>No. of PK</p>
+                                        </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce27">
+                                            <p>DESCRIPTION OF PACKAGES AND GOODS</p>
+                                        </td>
+                                        <td style="text-align:left;width:90pt; " class="ce12">
+                                            <p>GROSS WEIGHT</p>
+                                        </td>
+                                        <td style="text-align:left;width:90pt; " class="ce54">
+                                            <p>MEASUREMENT</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro3">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce13">
+                                            <p>
+                                                <div style="white-space: pre-wrap;">
+                                                    <t t-esc="o.container_id.container_data"/>
+                                                </div>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:72pt; " class="ce21">
+                                            <p>
+                                                <t t-esc="o.bags"/>
+                                            </p>
+                                        </td>
+                                        <td colspan="3" style="text-align:left;width:144pt; " class="ce28">
+                                            <p>
+                                                <t t-foreach="o.sale_item_ids" t-as="item">
+                                                    <span><t t-esc="item.item_id.name"/>(<t t-esc="item.quantity"/>)
+                                                    </span>
+                                                </t>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:90pt; " class="ce52">
+                                            <p>
+                                                <t t-esc="o.weight"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:90pt; " class="ce55">
+                                            <p>
+                                                <t t-esc="o.volume"/>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="4" rowspan="3" style="text-align:left;width:144pt; " class="ce14">
+                                            <p>RECEIVED BY THE CARRIER GOODS
+                                                SPECIFIED ABOVE IN APPARENT GOOD ORDER AND CONDITION UNLESS OTHERWISE
+                                                STATED
+                                                FOR
+                                                CARRIAGE FROM THE PLACEOR
+                                                PORT INDICATED ABOVE TO SUCH PORT OR PLACE: AS AGREED, AUTHORIZED, OR
+                                                PERMITED
+                                                HEREIN AND SUBJECT TO ALL THE
+                                                TERMS AND CONDITIONS APPEARING ON THE FRONT AND REVERSE OF THIS BILL OF
+                                                LANDING
+                                                TO WHICH THE MERCHANT
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:90pt; " class="ce43">
+                                            <p>FREIGHT DETAILS CHARGES, ETC</p>
+                                        </td>
+                                        <td style="text-align:left;width:90pt; " class="ce43">
+                                            <p>PREPAID</p>
+                                        </td>
+                                        <td style="text-align:left;width:90pt; " class="ce43">
+                                            <p>COLLECT</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" style="text-align:left;width:90pt; " class="ce44">
+                                            <p>FREIGHT AS AGREED</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro4">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="3" rowspan="5" style="text-align:left;width:90pt; " class="ce45">
+                                            <div id="Aduana">
+
+                                            </div>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro5">
+                                        <td style="text-align:left;width:180pt; " class="ce2"> </td>
+                                        <td colspan="4" style="text-align:left;width:144pt; " class="ce15">
+                                            <p>ORIGINAL</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro6">
+                                        <td style="text-align:left;width:180pt; " class="ce3"> </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce9">
+                                            <p>No. of ORIGINAL BL(s)</p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce9">
+                                            <p>PLACE &amp; DATE OF ISSUE</p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce3"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce6">
+                                            <p>Origin (0)</p>
+                                        </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce29">
+                                            <p>
+                                                <div>
+                                                    <t t-esc="user.city"/>
+                                                    <t t-esc="user.country_id.code"/>.
+                                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                                                </div>
+                                            </p>
+                                        </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td colspan="2" style="text-align:left;width:144pt; " class="ce8">
+                                            <p>Destination (3)</p>
+                                        </td>
+                                        <td style="text-align:left;width:144pt; " class="ce30"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce20"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:72pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                    <tr class="ro1">
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:72pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:144pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:90pt; " class="ce1"> </td>
+                                        <td style="text-align:left;width:180pt; " class="ce1"> </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

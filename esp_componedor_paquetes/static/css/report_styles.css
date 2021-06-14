@@ -1,0 +1,24 @@
+table.table-bordered > * > tr > *{
+    border:3px solid;
+    text-align: center;
+}
+
+div {
+    /*border: 2px solid;*/
+}
+
+.border {
+    border-color: var(--bs-dark) !important;
+}
+
+.border_right {
+    border-right: solid 1px var(--bs-dark);
+}
+
+.border_left {
+    border-left: solid 1px var(--bs-dark);
+}
+
+.border_bottom {
+    border-bottom: solid 1px var(--bs-dark);
+}

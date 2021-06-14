@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Ing. Yadier Abel de Quesada yadierq87@gmail.com -->
+<odoo>
+    <data noupdate="1">
+        <!-- sequence solicitud de pago -->
+        <record id="sequence_solicitud_pago_cup" model="ir.sequence">
+            <field name="name">sequence aduana paquete checking </field>
+            <field name="code">sequence.aduana.packaging</field>
+            <field name="active">TRUE</field>
+            <field name="suffix">CH-PAQ/%(range_year)s</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>
+
+

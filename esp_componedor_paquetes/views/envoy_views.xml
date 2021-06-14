@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="esp_cpm_envoy_view_form" model="ir.ui.view">
+            <field name="name">Vista Envio</field>
+            <field name="model">cmp.envoy</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <sheet string="Preparando Envio" modifiers="{}">
+                        <group col="4" modifiers="{}">
+                            <field name="name" modifiers="{'required':true}"/>
+                            <field name="sender" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="destination" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="notify" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="sorting_rule_id" can_create="true" can_write="true"
+                                   modifiers="{'required':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="packages_ids" colspan="4" modifiers="{'required':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="weight" modifiers="{}"/>
+                            <field name="volume" modifiers="{}"/>
+                            <field name="delivery_price" modifiers="{}"/>
+                            <separator modifiers="{}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="esp_cpm_pre_envoy_view_form" model="ir.ui.view">
+            <field name="name">Vista Venta del Envio Total</field>
+            <field name="model">cmp.envoy.total</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <header>
+                        <field name="state" widget="statusbar" clickable="True"/>
+                        <button name="action_quotation_send" type="object"
+                                string="Ver PRO-FORMA Venta"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('state', 'not in', ['facturado','cobrado','despachado'])]}"/>
+                    </header>
+                    <sheet string="Preparando Envio para Cliente" modifiers="{}">
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object"
+                                    icon="fa-tasks" name="total_process"
+                                    string="" context="{}"
+                                    help="Procesar lista de articulos para ordenar en paquetes">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Procesar Articulos</span>
+                                </div>
+                            </button>
+                            <button class="oe_stat_button" type="object"
+                                    icon="fa-money" name="create_invoce_envoy"
+                                    string="" context="{}"
+                                    help="Crear la Factura de Venta para este grupo de Envios">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Crear Factura</span>
+                                </div>
+                            </button>
+                        </div>
+                        <group col="4" modifiers="{}">
+                            <field name="name" modifiers="{'required':true}"/>
+                            <field name="no_sale_order_id"
+                                   attrs="{'invisible': [('state','in',['borrador','creado','cancelado'])]}" />
+                            <field name="sender" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="sorting_rule_id" can_create="true"
+                                   can_write="true" modifiers="{'required':true}"/>
+                            <field name="container_id"/>
+                            <field name="container_real_capacity"/>
+                            <field name="weight"/>
+                            <field name="cost"/>
+                            <field name="envoy"/>
+                            <field name="packages"/>
+                            <field name="sale_items"/>
+                            <!-- Embarques disponibles -->
+                        </group>
+                        <group col="2">
+                            <newline modifiers="{}"/>
+                            <field name="entry_sale_items" modifiers="{'required':true}">
+                                <tree string="Listado de Productos"
+                                      create="true" edit="true" editable="bottom"
+                                      open="false" options="{'no_open': True}"
+                                      attrs="{'no_open': True}">
+                                    <field name="item_id"/>
+                                    <field name="name"/>
+                                    <!--field name="barcode" edit="true"/-->
+                                    <field name="category_id"/>
+                                    <field name="bags"/>
+                                    <field name="weight"/>
+                                    <field name="volume"/>
+                                    <field name="max_allowed"/>
+                                    <field name="quantity"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <newline modifiers="{}"/>
+                        <group col="2" string="Envios Preparados" attrs="{'invisible': [('state','=','borrador')]}">
+                            <field name="envoy_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="weight"/>
+                                    <field name="volume"/>
+                                    <field name="sender"/>
+                                    <field name="destination"/>
+                                    <field name="notify"/>
+                                    <field name="total_items"/>
+                                    <field name="delivery_price"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="esp_cpm_reservation_container_view_form" model="ir.ui.view">
+            <field name="name">Vista Reservas</field>
+            <field name="model">cmp.reservation.container</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <sheet string="Reservar Espacio Embarque" modifiers="{}">
+                        <group col="2" modifiers="{}">
+                            <field name="name"/>
+                            <field name="shipping_date"/>
+                            <field name="capacity_type"/>
+                            <field name="shipping_capacity"/>
+                            <field name="shipper"/>
+                            <field name="forwarder"/>
+                            <field name="vessel"/>
+                            <field name="trip_number"/>
+                            <newline modifiers="{}"/>
+                            <field name="shipment_origin"/>
+                            <field name="shipment_destiny"/>
+                            <field name="freight"/>
+                            <field name="transportation_tax"/>
+                            <field name="transportation_cost"/>
+                            <field name="real_capacity"/>
+                            <field name="real_shipping_date"/>
+                            <field name="container_data" widget="text"/>
+                            <separator modifiers="{}"/>
+                            <field name="envoys_total_ids" class="oe_read_only"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

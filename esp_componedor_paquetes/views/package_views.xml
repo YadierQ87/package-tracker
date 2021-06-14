@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="esp_cmp_sale_items_view_form" model="ir.ui.view">
+            <field name="name">Articulos Envio</field>
+            <field name="model">cmp.sale.items</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <sheet string="Articulo Envio" modifiers="{}">
+                        <group col="4" modifiers="{}">
+                            <field name="name"/>
+                            <field name="item_id"/>
+                            <field name="category_id"/>
+                            <!--<field name="max_allowed" />-->
+                            <field name="description"/>
+                            <field name="weight"/>
+                            <field name="quantity"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="esp_cmp_sale_items_list_view" model="ir.ui.view">
+            <field name="name">Articulos</field>
+            <field name="model">cmp.sale.items</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="Articulo para Enviar">
+                    <field name="item_id"/>
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <!--<field name="description"/>-->
+                    <field name="weight"/>
+                    <field name="quantity"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--Pacakge SEARCH by hbl-->
+        <record id="package_hbl_view_search" model="ir.ui.view">
+            <field name="name">cmp.package.items.search</field>
+            <field name="model">cmp.package.items</field>
+            <field name="arch" type="xml">
+                <search string="Search H.S. Codes">
+                    <field  name="barcode"
+                      filter_domain="['|', ('barcode', 'like', self), ('name', 'like', self)]"
+                    />
+                    <field name="hbl_header"
+                       filter_domain="['|', ('hbl_header', 'like', self), ('name', 'like', self)]"
+                    />
+                </search>
+            </field>
+        </record>
+
+        <!-- Package Tree View -->
+        <record id="esp_cmp_package_items_list_view" model="ir.ui.view">
+            <field name="name">Paquetes</field>
+            <field name="model">cmp.package.items</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="Paquete">
+                    <field name="name"/>
+                    <!--field name="hbl_header"/-->
+                    <!--field name="barcode"/-->
+                    <field name="sorting_rule_id"/>
+                    <field name="qr_code" widget="image" class="oe_avatar"/>
+                    <!--field name="envoy_id"/-->
+                    <field name="sale_item_ids" widget="many2many_tags"/>
+                    <field name="weight"/>
+                    <field name="volume"/>
+                    <!--field name="price_unit"/-->
+                    <field name="price_neto"/>
+                    <field name="item_types"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

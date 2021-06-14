@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- override res.partner base.view_partner_form-->
+        <record id="category_aduana_view_product_template_inherited" model="ir.ui.view">
+            <field name="name">Vista Aduana</field>
+            <field name="model">product.template</field>
+            <field name="priority">2</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <!-- ...match and extend elements here! ... -->
+                <xpath expr="//notebook" position="inside">
+                    <page string="Envio Aduana">
+                        <group string="Aduana" priority="1" col="4">
+                            <field name="category_id" />
+                            <field name="bags"/>
+                            <field name="brand_id"/>
+                            <field name="modelo_id"/>
+                            <field name="fraction_material" readonly="1"/>
+                            <field name="customs_price" widget="monetary"/>
+                            <field name="is_bundle"/>
+                        </group>
+                    </page>
+                    <page string="Combo">
+                        <group string="Combo" priority="1" col="2">
+                            <field name="is_bundle" />
+                            <field name="bundle_items" modifiers="{'required':true}">
+                                <tree string="Productos del combo">
+                                    <field name="item_id"/>
+                                    <field name="quantity"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <!-- override res.partner base.view_partner_form-->
+        <record id="esp_res_partner_template_inherited" model="ir.ui.view">
+            <field name="name">Transportista</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Envio Aduana">
+                        <group string="Categoria Transportista" priority="1" col="4">
+                            <field name="transport_type" />
+                            <field name="shipper_initials" />
+                        </group>
+                    </page>
+                </xpath>
+                <!-- Passport and iD -->
+                <xpath expr="//field[@name='vat']" position="before">
+                    <field name="nacionality"/>
+                    <field name="passport"/>
+                    <field name="ci"/>
+                </xpath>
+                <xpath expr="//field[@name='type']" position="before">
+                    <field name="second_name"/>
+                    <field name="first_lastname"/>
+                    <field name="second_lastname"/>
+                    <field name="date_of_birth"/>
+                </xpath>
+                <xpath expr="//field[@name='street2']" position="after">
+                    <field name="num_house"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- override res.partner base.view_partner_form-->
+
+        <record id="esp_res_company_template_inherited" model="ir.ui.view">
+            <field name="name">Company</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='social_media']" position="after">
+                    <group string="Comercio Exterior" priority="1" col="4">
+                        <field name="operation_type" />
+                        <field name="pediment_key" />
+                        <field name="origin_certified" />
+                        <field name="incoterm" />
+                        <field name="subdivision" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

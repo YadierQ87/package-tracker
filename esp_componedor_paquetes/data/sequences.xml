@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sequence_for_cmp_packages" model="ir.sequence">
+            <field name="name">New Package Seq</field>
+            <field name="code">cmp.package.items</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">%(y)s</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="sequence_for_cmp_envoy" model="ir.sequence">
+            <field name="name">New Envoy Seq</field>
+            <field name="code">cmp.envoy</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">ENV/HBL</field>
+            <field name="suffix">/%(range_year)s/</field>
+            <field name="padding">6</field>
+        </record>a
+
+        <record id="sequence_for_cmp_total_envoys" model="ir.sequence">
+            <field name="name">New Total Envoys Seq</field>
+            <field name="code">cmp.envoy.total</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">ET/%(range_year)s/</field>
+            <field name="padding">6</field>
+        </record>
+
+        <record id="sequence_for_cmp_embarque" model="ir.sequence">
+            <field name="name">New Embarque Seq</field>
+            <field name="code">cmp.reservation.container</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">EMB/%(range_year)s/</field>
+            <field name="padding">6</field>
+        </record>
+
+
+        <record id="sequence_for_manifiesto_embarque" model="ir.sequence">
+            <field name="name">New Manifiesto Seq</field>
+            <field name="code">cmp.reservation.manifiesto</field>
+            <!-- Manifiesto202008030001PC -->
+            <field name="active">TRUE</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+        </record>
+
+    </data>
+</odoo>

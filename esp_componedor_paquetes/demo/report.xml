@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+    © 2017 Creu Blanca
+    License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
+    -->
+    <report
+        id="partner_xlsx"
+        model="cmp.reservation.container"
+        string="Imprimir Excel Courier"
+        report_type="xlsx"
+        name="esp_componedor_paquetes.contenedor_report"
+        file="Planilla_Courier_ok"
+        attachment_use="False"
+    />
+</odoo>

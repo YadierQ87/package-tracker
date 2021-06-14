@@ -1,0 +1,174 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="esp_aduana_checking.list">
+            <field name="name">Aduana Checking Package</field>
+            <field name="model">aduana.package.checking</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="package_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="esp_aduana_checking_envoys_kanban">
+            <field name="name">Checking Package</field>
+            <field name="model">aduana.package.checking</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage" class="o_kanban_small_column o_kanban_project_tasks">
+                    <field name="id" />
+                    <field name="name" />
+                    <!--progressbar field="state" colors='{"done": "success", "open": "warning", "draft": "primary"}'/-->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <div> No Paquete : <span class="text-alpha"><field name="package_id"/></span> </div>
+                                        <div>Etapa : <field name="stage" /></div>
+                                        <div>Estado:
+                                            <span class="badge bg-primary"><field name="kanban_state"  /></span>
+                                            <field name="kanban_state"  widget="kanban_state_selection" readonly="1"/>
+                                        </div>
+                                    </strong>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="esp_aduana_checking_view_form" >
+            <field name="name">Aduana Checking Form</field>
+            <field name="model">aduana.package.checking</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <header>
+                        <field name="stage" widget="statusbar" clickable="0"/>
+                    </header>
+                    <sheet string="Checking de paquetes o bultos en la Aduana" modifiers="{}">
+                        <div class="oe_button_box" name="button_box" modifiers="{}" >
+                            <button name="do_pass_this_stage"
+                                    string=" Continuar" type="object"
+                                    help="Pasa al siguiente estado validando todo OK"
+                                    class="oe_stat_button text-success" icon="fa-forward"/>
+                            <button name="do_uncheck_all"
+                                    help="Limpia los registros para comenzar de nuevo el chequeo"
+                                    string=" Resetear" type="object"
+                                    class="oe_stat_button text-danger" icon="fa-history"/>
+                        </div>
+                        <group col="4">
+                            <field name="package_id"
+                                   options="{'no_create': True, 'no_open': True}"
+                            />
+                            <field name="kanban_state" widget="kanban_state_selection"/>
+                        </group>
+                        <group col="4"
+                               attrs="{'invisible':[('package_id', '=', False)]}">
+                            <field name="barcode_to_check"  />
+                            <field name="count_check"/>
+                        </group>
+                        <group col="2" string="Articulos para Chequear"
+                               attrs="{'invisible':[('package_id', '=', False)]}">
+                            <field name="list_items" modifiers="{'readonly':true}"  >
+                                <tree editable="bottom" create="false" delete="false" >
+                                    <field name="item_id"/>
+                                    <field name="package_id" />
+                                    <field name="barcode"/>
+                                    <field name="quantity"/>
+                                    <field name="quantity_check"/>
+                                    <field name="customs_state"/>
+                                    <!-- buttons -->
+                                    <button name="do_check"
+                                            string=" Confirm" type="object"
+                                            class="btn fa fa-check text-success"/>
+                                    <button name="do_failed"
+                                            string=" Clear" type="object"
+                                            class="btn fa fa-times-circle text-danger"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="esp_aduana_checking_envoys_list">
+            <field name="name">Aduana Checking Envoy</field>
+            <field name="model">aduana.envoy.checking</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="envoy_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="esp_aduana_checking_envoys_view_form" >
+            <field name="name">Aduana Checking Form</field>
+            <field name="model">aduana.envoy.checking</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                        <button name="do_confirm" string="Confirmar Envio" class="oe_highlight" type="object"/>
+                    </header>
+                    <sheet string="Checking de Envoy en la Aduana" modifiers="{}">
+                        <group col="2">
+                            <field name="envoy_id"/>
+                        </group>
+                        <group col="2">
+                            <field name="list_package" modifiers="{'required':true}">
+                                <tree editable="bottom" >
+                                    <field name="name"/>
+                                    <field name="barcode"/>
+                                    <field name="sale_item_ids" widget="many2many_tags"/>
+                                    <field name="sender"/>
+                                    <field name="customs_state" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="esp_aduana_checking_action_window">
+            <field name="name">Checking Aduana Packages</field>
+            <field name="res_model">aduana.package.checking</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="esp_aduana_checking_envoy_action_window">
+            <field name="name">Checking Aduana Envoys</field>
+            <field name="res_model">aduana.envoy.checking</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="Checking Aduana" id="esp_aduana_checking.menu_root" />
+
+        <menuitem name="Checking Bultos"
+                  id="esp_aduana_checking.menu_list_checking_packages"
+                  parent="esp_aduana_checking.menu_root"
+                  action="esp_aduana_checking_action_window"/>
+
+        <menuitem name="Checking Envios"
+                  id="esp_aduana_checking.menu_list_checking_envoys"
+                  parent="esp_aduana_checking.menu_root"
+                  action="esp_aduana_checking_envoy_action_window"/>
+
+    </data>
+</odoo>

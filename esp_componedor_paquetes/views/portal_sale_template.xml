@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <template id="esp_cmp_layout_envoy_portal">
+            <t t-call="website.layout">
+                <div class="page">
+                    <h1>Hola mundo</h1>
+                </div>
+                <div class="main">
+                    <t t-foreach="reservations" t-as="reservation">
+                        <t t-esc="reservation.name"/>
+                    </t>
+                    <form>
+                        <h1>Registro de venta</h1>
+                        <br/>
+                        <div class="client_view">
+                            <input type="text" placeholder="cliente"/>
+                            <button type="button" class="button">Agregar Cliente</button>
+                        </div>
+                        <section>
+                            <ul>
+                                <li>
+                                    <input type="text" placeholder="Articulo"/>
+                                    <input type="text" placeholder="categoria"/>
+                                    <input type="number" placeholder="peso"/>
+                                    <input type="number" placeholder="volumen"/>
+                                    <button>delete</button>
+                                </li>
+                                <li>
+                                    <input type="text" placeholder="Articulo"/>
+                                    <input type="text" placeholder="categoria"/>
+                                    <input type="number" placeholder="peso"/>
+                                    <input type="number" placeholder="volumen"/>
+                                    <button>delete</button>
+                                </li>
+                                <li>
+                                    <button type="button" content="agregar" class="button">Agregar articulo</button>
+                                </li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h2>Envios</h2>
+                            <table>
+                                <tbody>
+                                    <tr>Hello</tr>
+                                    <tr>Goodbye</tr>
+                                </tbody>
+                            </table>
+                            <ul>
+                                <li>
+                                    <span>numero de envio</span>
+                                    <span>destinatario</span>
+                                    <span>cantidad</span>
+                                    <span>volumen</span>
+                                    <span>peso</span>
+                                </li>
+                            </ul>
+                        </section>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

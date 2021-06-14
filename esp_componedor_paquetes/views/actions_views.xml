@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="cmp_reservation_container_form_actions" model="ir.actions.act_window">
+        <field name="name">Reserva de Espacios</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.reservation.container</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                Aqui se muestran los Espacios Reservados
+            </p>
+        </field>
+    </record>
+
+    <record id="cmp_envoy_form_actions" model="ir.actions.act_window">
+        <field name="name">Envio de Paquetes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.envoy</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                Aqui se muestran los envios creados
+            </p>
+        </field>
+    </record>
+
+    <record id="cmp_pre_envoy_form_actions" model="ir.actions.act_window">
+        <field name="name">Preparar Envios de Paquetes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.envoy.total</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                Aqui se crean los Pre-Envios
+            </p>
+        </field>
+    </record>
+
+    <record id="cmp_package_items_form_actions" model="ir.actions.act_window">
+        <field name="name">Paquetes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.package.items</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="cmp_sorter_rule_form_actions" model="ir.actions.act_window">
+        <field name="name">Reglas Aduana</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.sorter.rule</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="cmp_category_item_form_actions" model="ir.actions.act_window">
+        <field name="name"> Categorias Articulos Aduana</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.category.item</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="cmp_sale_items_form_actions" model="ir.actions.act_window">
+        <field name="name">Articulos de Envio</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.sale.items</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- Configuraciones -->
+
+    <record id="cmp_fraccion_arancelaria_form_actions" model="ir.actions.act_window">
+        <field name="name">Fracciones Arancelarias</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.fraccion.arancelaria</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record id="cmp_product_brand_form_actions" model="ir.actions.act_window">
+        <field name="name">Marcas de Productos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.product.brand</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record id="cmp_product_model_form_actions" model="ir.actions.act_window">
+        <field name="name">Modelos de las Marcas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cmp.product.model</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Ing. Yadier Abel de Quesada yadierq87@gmail.com -->
+<odoo>
+    <data noupdate="1">
+        <!-- TODO Crear un record para guardar en BD que coloque el icono del modulo-->
+        <!--  TODO image_path = get_module_resource('hr', 'static/src/img', 'default_image.png') -->
+    </data>
+</odoo>
+
+

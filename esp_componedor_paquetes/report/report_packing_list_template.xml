@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- packing list minified -->
+        <template id="esp_cmp_report_packing_list_minified">
+            <t t-call="web.basic_layout"> <!-- #html_container con el logo -->
+                <style>
+                    th.center{  font-weigth:bold; }
+                    .table-bordered td,.table-bordered tr,.table-bordered th
+                    { border: solid 1px #222 !important; padding:2px; }
+                    table {}
+                    .page{position: absolute;
+                    top: 0;}
+                </style>
+                <div class="page">
+                    <t t-foreach="docs" t-as="o">
+                        <table class="table">
+                            <thead>
+                                <tr class="align-middle">
+                                    <th scope="col" width="50%">
+                                        <span>LISTA DE EMPAQUE EXPORTACION</span>
+                                    </th>
+                                    <th scope="col" width="50%"> </th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div>Transportadora <t t-esc="o.shipper.name"/></div>
+                        <div><span t-esc="res_company.name"/></div>
+                        <div>BOOKING</div>
+                        <br/>
+                        <div class="p-4">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="align-middle">
+                                        <th scope="col">ITEM</th>
+                                        <th scope="col">DESCRIPCION</th>
+                                        <th scope="col">FRACCIONES ARANCELARIAS</th>
+                                        <th scope="col">MARCA</th>
+                                        <th scope="col">CANT. UNIDADES</th>
+                                        <th scope="col">PRECIO UNITARIO MN</th>
+                                        <th scope="col">TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <!-- EMPIEZA EL CICLO FOREACH ENVOY-->
+                                <tbody t-raw="o.html_pack_short" />
+                                <!-- TERMINA EL CICLO -->
+                                <tfoot>
+                                    <!-- SUMATORIA FINAL    -->
+                                    <tr>
+                                        <td >-</td>
+                                        <td >-</td>
+                                        <td >-</td>
+                                        <td >-</td>
+                                        <td ><span t-esc="o.total_items"/> </td>
+                                        <td >-</td>
+                                        <td ><span t-esc="'%.2f'%o.total_cost"/> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+
+        <!-- #1 Packing List (Lista de Empaque)-->
+        <template id="esp_cmp_report_packing_list">
+            <t t-call="web.basic_layout"> <!-- #html_container con el logo -->
+                <style>
+                    th.center{  font-weigth:bold; }
+                    .table-bordered td,.table-bordered tr,.table-bordered th
+                    { border: solid 1px #222 !important; padding:2px; }
+                    table {}
+                    .page{position: absolute;
+                    top: 0;}
+                </style>
+                <div class="page">
+                    <t t-foreach="docs" t-as="o">
+                        <table class="table">
+                            <thead>
+                                <tr class="align-middle">
+                                    <th scope="col" width="50%">
+                                        <span>LISTA DE EMPAQUE EXPORTACION</span>
+                                    </th>
+                                    <th scope="col" width="50%">
+                                        <!-- <img alt="Barcode"
+                          t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus('POLO450'), 600, 150)"
+                          style="width:400px;height::100px;text-align: right;" />
+                                         <br/>
+                                         <t t-esc="o.name"/>-->
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div>Transportadora <t t-esc="o.shipper.name"/></div>
+                        <div><span t-esc="res_company.name"/></div>
+                        <div>BOOKING</div>
+                        <br/>
+                        <div class="p-4">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="align-middle">
+                                        <th scope="col">ITEM</th>
+                                        <th scope="col">DESCRIPCION</th>
+                                        <th scope="col">FRACCIONES ARANCELARIAS</th>
+                                        <th scope="col">MATERIAL DEL QUE ESTA CONSTITUIDO</th>
+                                        <th scope="col">MARCA</th>
+                                        <th scope="col">CODIGO O MODELO</th>
+                                        <th scope="col">CANT. UNIDADES</th>
+                                        <th scope="col">PRECIO UNITARIO MN</th>
+                                        <th scope="col">TOTAL</th>
+                                        <th scope="col">No. SERIE/ LOTE</th>
+                                        <th scope="col">VOLUMEN (m3)</th>
+                                        <th scope="col">PESO BRUTO (Kg)</th>
+                                        <th scope="col">CANTIDAD DE BULTOS</th>
+                                    </tr>
+                                </thead>
+                                <!-- EMPIEZA EL CICLO FOREACH ENVOY-->
+                                <tbody t-raw="o.html_records" />
+                                <!-- TERMINA EL CICLO -->
+                                <tfoot>
+                                    <!-- SUMATORIA FINAL    -->
+                                    <tr>
+                                        <td >-</td>
+                                        <td >-</td>
+                                        <td >-</td>
+                                        <td >-</td>
+                                        <td >- </td>
+                                        <td >-</td>
+                                        <td ><span t-esc="o.total_items"/> </td>
+                                        <td >-</td>
+                                        <td ><span t-esc="'%.2f'%o.total_cost"/></td>
+                                        <td >-</td>
+                                        <td ><span t-esc="'%.2f'%o.total_volume"/> </td>
+                                        <td ><span t-esc="'%.2f'%o.total_weight"/> </td>
+                                        <td ><span t-esc="o.total_bags"/> </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

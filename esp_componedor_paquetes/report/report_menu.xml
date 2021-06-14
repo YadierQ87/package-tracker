@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_reporte" model="report.paperformat">
+        <field name="name">Reporte Carga</field>
+        <field name="orientation">Landscape</field>
+    </record>
+
+    <record id="paperformat_portrait_lowmargin" model="report.paperformat">
+        <field name="name">Portrait A4 low margin</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">4</field>
+        <field name="margin_bottom">4</field>
+        <field name="margin_left">4</field>
+        <field name="margin_right">4</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="paperformat_landscape_lowmargin" model="report.paperformat">
+        <field name="name">Landscape A4 low margin</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">4</field>
+        <field name="margin_bottom">4</field>
+        <field name="margin_left">4</field>
+        <field name="margin_right">4</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="proforma_sale_envios_report"
+            string="Pro-Forma Venta de Envio"
+            model="cmp.envoy.total"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.new_package_report_saleorder_document"
+            file="esp_componedor_paquetes.new_package_report_saleorder_document"
+    />
+
+    <!-- Packing list -->
+    <report id="print_report_pdf"
+            string="Packing List Completo"
+            model="cmp.reservation.container"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_packing_list"
+            file="esp_componedor_paquetes.esp_cmp_report_packing_list"
+            paperformat="esp_componedor_paquetes.paperformat_landscape_lowmargin"
+    />
+
+    <report id="print_report_pdf_minified"
+            string="Packing List Mini"
+            model="cmp.reservation.container"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_packing_list_minified"
+            file="esp_componedor_paquetes.esp_cmp_report_packing_list_minified"
+            paperformat="esp_componedor_paquetes.paperformat_portrait_lowmargin"
+    />
+
+    <!-- Manifiesto de Carga -->
+
+    <report id="print_report_manifiesto_pdf"
+            string="Report Manifiesto Carga"
+            model="cmp.reservation.container"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_manifiesto_carga"
+            file="esp_componedor_paquetes.esp_cmp_report_manifiesto_carga"
+            paperformat="esp_componedor_paquetes.paperformat_landscape_lowmargin"
+    />
+
+    <!-- Fiscal CDFI -->
+    <report id="print_report_cdf_fiscal_pdf"
+            string="Report CDFI Fiscal"
+            model="cmp.reservation.container"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_cdfi_invoice"
+            file="esp_componedor_paquetes.esp_cmp_report_cdfi_invoice"
+    />
+
+    <!-- HBL Report de Carga para cada paquete -->
+    <report id="print_report_hbl_embarque_pdf"
+            string="Report HBL Carga"
+            model="cmp.package.items"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_hbl_embarque_carga"
+            file="esp_componedor_paquetes.esp_cmp_report_hbl_embarque_carga"
+    />
+
+    <report id="print_report_tag"
+            string="Report Etiqueta"
+            model="cmp.package.items"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_tag"
+            file="esp_componedor_paquetes.report_tag_template.xml"
+    />
+
+    <report id="print_report_envoy_tag"
+            string="Report Etiqueta de Envio"
+            model="cmp.envoy"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_envoy_tag"
+            file="esp_componedor_paquetes.report_envoy_tag_template.xml"
+    />
+
+    <report id="print_report_container_hbl_embarque_pdf"
+            string="Report Container HBLs"
+            model="cmp.reservation.container"
+            report_type="qweb-pdf"
+            name="esp_componedor_paquetes.esp_cmp_report_container_hbl"
+            file="esp_componedor_paquetes.esp_cmp_report_container_hbl"
+            paperformat="esp_componedor_paquetes.paperformat_portrait_lowmargin"
+    />
+
+    <!-- Generar los reportes xml -->
+    <!-- esta en archivo Manifiesto_template_xml.xml -->
+    <report id="export_report_manifiesto_carga_xml"
+            string="Reporte XML Manifiesto"
+            model="cmp.reservation.container"
+            report_type="qweb-xml"
+            name="esp_componedor_paquetes.report_manifiesto_carga_xml_aduana"
+            file="esp_componedor_paquetes.report_manifiesto_carga_xml_aduana"
+    />
+    <!-- esta en archivo CDFI_template_xml.xml -->
+    <report id="export_report_cdfi_file_xml"
+            string="Reporte XML CDFI"
+            model="cmp.reservation.container"
+            report_type="qweb-xml"
+            name="esp_componedor_paquetes.report_cdfi_file_xml"
+            file="esp_componedor_paquetes.report_cdfi_file_xml"
+    />
+
+</odoo>

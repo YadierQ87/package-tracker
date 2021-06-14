@@ -1,0 +1,873 @@
+@page {
+}
+
+.page {
+    font-weight: bolder;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show
+}
+
+td, th {
+    vertical-align: top;
+    font-size: 10pt;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    clear: both;
+}
+
+ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* "li span.odfLiEnd" - IE 7 issue*/
+li span. {
+    clear: both;
+    line-height: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+span.footnodeNumber {
+    padding-right: 1em;
+}
+
+span.annotation_style_by_filter {
+    font-size: 95%;
+    font-family: Arial;
+    background-color: #fff000;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+span.heading_numbering {
+    margin-right: 0.8rem;
+}
+
+* {
+    margin: 0;
+}
+
+.ta1 {
+    writing-mode: lr-tb;
+}
+
+.ce1 {
+    font-family: Liberation Sans;
+    padding: 2.01pt;
+}
+
+.ce10 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce11 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+}
+
+.ce12 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce13 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: right ! important;
+    margin-left: 0pt;
+    font-size: 12pt;
+}
+
+.ce14 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    vertical-align: bottom;
+    text-align: justify ! important;
+    margin-left: 0pt;
+}
+
+.ce15 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    vertical-align: middle;
+    text-align: center ! important;
+    font-size: 32pt;
+    font-weight: bold;
+}
+
+.ce16 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+}
+
+.ce17 {
+    font-family: Liberation Sans;
+    border-style: none;
+    padding: 2.01pt;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce18 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce19 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+}
+
+.ce2 {
+    font-family: Liberation Sans;
+    padding: 2.01pt;
+    font-weight: bold;
+}
+
+.ce20 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+}
+
+.ce21 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: top;
+    text-align: right ! important;
+    margin-left: 0pt;
+    font-size: 12pt;
+}
+
+.ce22 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce23 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce24 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce25 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+}
+
+.ce26 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce27 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    vertical-align: middle;
+    text-align: center ! important;
+    margin-left: 0pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce28 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: top;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 12pt;
+}
+
+.ce29 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: center ! important;
+}
+
+.ce3 {
+    font-family: Liberation Sans;
+    padding: 2.01pt;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce30 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-style: none;
+}
+
+.ce31 {
+    font-family: Liberation Sans;
+    padding: 2.01pt;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.ce32 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-weight: bold;
+}
+
+.ce33 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: center ! important;
+    margin-left: 0pt;
+}
+
+.ce34 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-style: none;
+}
+
+.ce35 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+}
+
+.ce36 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 9pt;
+    font-weight: normal;
+}
+
+.ce37 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce38 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    vertical-align: middle;
+    text-align: center ! important;
+}
+
+.ce39 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+}
+
+.ce4 {
+    font-family: Liberation Sans;
+    padding: 2.01pt;
+    vertical-align: middle;
+    text-align: center ! important;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.ce40 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    font-size: 12pt;
+}
+
+.ce41 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    font-weight: bold;
+}
+
+.ce42 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: center ! important;
+}
+
+.ce43 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    vertical-align: bottom;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce44 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: center ! important;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce45 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: center ! important;
+}
+
+.ce46 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-style: none;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce47 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.ce48 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.ce49 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.ce5 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce50 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.ce51 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-style: none;
+}
+
+.ce52 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-style: none;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: top;
+    font-size: 12pt;
+}
+
+.ce53 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+}
+
+.ce54 {
+    font-family: Liberation Sans;
+    border-width: 0.0133cm;
+    border-style: solid;
+    border-color: #000000;
+    padding: 2.01pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.ce55 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-style: none;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: top;
+    font-size: 12pt;
+}
+
+.ce6 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce7 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: center ! important;
+}
+
+.ce8 {
+    font-family: Liberation Sans;
+    border-bottom-width: 0.0133cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+}
+
+.ce9 {
+    font-family: Liberation Sans;
+    border-bottom-style: none;
+    border-left-width: 0.0133cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    padding: 2.01pt;
+    border-right-width: 0.0133cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0.0133cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    vertical-align: middle;
+    text-align: left ! important;
+    margin-left: 0pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.co1 {
+    width: 180pt;
+}
+
+.co2 {
+    width: 144pt;
+}
+
+.co3 {
+    width: 72pt;
+}
+
+.co4 {
+    width: 90pt;
+}
+
+.ro1 {
+    height: 14.66pt;
+}
+
+.ro2 {
+    height: 17.01pt;
+}
+
+.ro3 {
+    height: 112.2pt;
+}
+
+.ro4 {
+    height: 78.6pt;
+}
+
+.ro5 {
+    height: 50.4pt;
+}
+
+.ro6 {
+    height: 14.4pt;
+}
+
+/* ODF styles with no properties representable as CSS */
+{
+}

@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+
+        <record id="esp_componedor_paquetes.cmp_package_items_form_actions" model="ir.actions.act_window">
+            <field name="name">Paquetes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cmp.package.items</field>
+            <field name="view_mode">tree,form,kanban,graph,pivot</field>
+        </record>
+
+        <!-- vista pivote para los analisis de los paquetes  -->
+        <record id="view_pivot_cmp_package_items" model="ir.ui.view">
+            <field name="name">view_pivot_cmp_package_items</field>
+            <field name="model">cmp.package.items</field>
+            <field name="arch" type="xml">
+                <pivot string="Paquetes">
+                    <field name="sorting_rule" type="row"/>
+                    <field name="province" type="col"/>
+                    <field name="city" type="col"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="view_graph_cmp_package_items" model="ir.ui.view">
+            <field name="name">view_graph_cmp_package_items</field>
+            <field name="model">cmp.package.items</field>
+            <field name="arch" type="xml">
+                <graph type="bar">
+                    <field name="sorting_rule"   />
+                    <field name="city" interval="week" />
+                    <field name="province" type="measure" />
+                </graph>
+            </field>
+        </record>
+
+    </data>
+</odoo>

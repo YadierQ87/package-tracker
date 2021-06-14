@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- #1 Packing List (Lista de Empaque)-->
+        <template id="esp_cmp_report_cdfi_invoice">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout"> <!-- #html_container con el logo -->
+                        <div class="page">
+                            <style type="text/css">
+                                @page {
+                                }
+
+                                table {
+                                border-collapse: collapse;
+                                border-spacing: 0;
+                                empty-cells: show
+                                }
+
+                                td, th {
+                                vertical-align: top;
+                                font-size: 10pt;
+                                }
+
+                                h1, h2, h3, h4, h5, h6 {
+                                clear: both;
+                                }
+
+                                ol, ul {
+                                margin: 0;
+                                padding: 0;
+                                }
+
+                                li {
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+                                }
+
+                                /* "li span.odfLiEnd" - IE 7 issue*/
+                                li span. {
+                                clear: both;
+                                line-height: 0;
+                                width: 0;
+                                height: 0;
+                                margin: 0;
+                                padding: 0;
+                                }
+
+                                span.footnodeNumber {
+                                padding-right: 1em;
+                                }
+
+                                span.annotation_style_by_filter {
+                                font-size: 95%;
+                                font-family: Arial;
+                                background-color: #fff000;
+                                margin: 0;
+                                border: 0;
+                                padding: 0;
+                                }
+
+                                span.heading_numbering {
+                                margin-right: 0.8rem;
+                                }
+
+                                * {
+                                margin: 0;
+                                }
+
+                                .ta1 {
+                                writing-mode: lr-tb;
+                                }
+
+                                .Default {
+                                font-family: Calibri;
+                                vertical-align: bottom;
+                                color: #000000;
+                                font-size: 11pt;
+                                }
+
+                                .ce1 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce10 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                border-bottom-width: 1px;
+                                border-bottom-style: solid;
+                                border-bottom-color: #000000;
+                                border-left-style: none;
+                                border-right-style: none;
+                                border-top-style: none;
+                                text-align: center ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce11 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: middle;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce12 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce13 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: top;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce14 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                border-style: none;
+                                text-align: right ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce15 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: middle;
+                                text-align: right ! important;
+                                margin-left: 0pt;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce16 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                text-align: right ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce17 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                text-align: right ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce18 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                text-align: right ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce2 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce3 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                text-align: center ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce4 {
+                                color: #000000;
+                                font-size: 28pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce5 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                border-style: none;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                }
+
+                                .ce6 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: bottom;
+                                border-style: none;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce7 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: top;
+                                border-style: none;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce8 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: top;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .ce9 {
+                                color: #000000;
+                                font-size: 11pt;
+                                font-family: Roboto;
+                                vertical-align: top;
+                                border-style: none;
+                                text-align: left ! important;
+                                margin-left: 0pt;
+                                writing-mode: page;
+                                font-style: normal;
+                                text-shadow: none;
+                                text-decoration: none ! important;
+                                font-weight: normal;
+                                }
+
+                                .co1 {
+                                width: 49.41pt;
+                                }
+
+                                .co2 {
+                                width: 112.96pt;
+                                }
+
+                                .co3 {
+                                width: 81.44pt;
+                                }
+
+                                .co4 {
+                                width: 61.09pt;
+                                }
+
+                                .co5 {
+                                width: 254.95pt;
+                                }
+
+                                .co6 {
+                                width: 87.65pt;
+                                }
+
+                                .ro1 {
+                                height: 13.8pt;
+                                }
+
+                                .ro2 {
+                                height: 33.85pt;
+                                }
+
+                                .ro3 {
+                                height: 15.76pt;
+                                }
+
+                                .ro4 {
+                                height: 15pt;
+                                }
+
+                                .ro5 {
+                                height: 13.8pt;
+                                }
+
+                                .ro6 {
+                                height: 30.5pt;
+                                }
+
+                                .T1 {
+                                font-family: Arial;
+                                color: #000000;
+                                font-style: normal;
+                                text-decoration: none ! important;
+                                font-weight: bold;
+                                font-size: 11pt;
+                                text-shadow: none;
+                                }
+
+                                .T2 {
+                                font-family: Arial;
+                                color: #000000;
+                                font-style: normal;
+                                text-decoration: none ! important;
+                                font-size: 11pt;
+                                text-shadow: none;
+                                font-weight: normal;
+                                }
+
+                                /* ODF styles with no properties representable as CSS */
+                                {
+                                }
+                            </style>
+                            <table border="0" cellspacing="0" cellpadding="0" class="ta1">
+                                <colgroup>
+                                    <col width="76"/>
+                                    <col width="174"/>
+                                    <col width="76"/>
+                                    <col width="76"/>
+                                    <col width="126"/>
+                                    <col width="94"/>
+                                    <col width="393"/>
+                                    <col width="135"/>
+                                    <col width="135"/>
+                                    <col width="135"/>
+                                    <col width="76"/>
+                                </colgroup>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:81.44pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:61.09pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce18"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro2">
+                                    <td style="text-align:left;width:49.41pt; " class="ce2"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce4">
+                                        <p>CFDI</p>
+                                    </td>
+                                    <td colspan="4" style="text-align:left;width:49.41pt; " class="ce11">
+                                        <p>Comprobante Fiscal Digital a Través De
+                                            Internet
+                                        </p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Tipo de comprobante</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce14">
+                                        <p>FACTURA</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce2"> </td>
+                                </tr>
+                                <tr class="ro3">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce5">
+                                        <p>Emisor</p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Efecto Fiscal</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_efecto_fiscal</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce6">
+                                        <p>
+                                            <span
+                                                    class="T1">EBS180523J28
+                                            </span>
+                                            <span class="T2">_company_name</span>
+                                        </p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Folio Fiscal</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_folio_fiscal</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce6"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Certificado SAT</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_certificado_sat</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro4">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" rowspan="3" style="text-align:left;width:112.96pt; " class="ce7">
+                                        <p>_company_address</p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Certificado del emisor</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_certificado_del_emisor</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Fecha y hora de certificación</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_fecha_y_hora_de_certificación</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Lugar de expedición</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_lugar_de_expedición</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce8"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce8"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce8"> </td>
+                                    <td style="text-align:left;width:81.44pt; " class="ce8"> </td>
+                                    <td style="text-align:left;width:61.09pt; " class="ce8"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Régimen fiscal</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_régimen_fiscal</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro3">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce5">
+                                        <p>Receptor</p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Folio/Serie</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_folio/serie</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce6">
+                                        <p>
+                                            <span
+                                                    class="T1">XEXX010101000
+                                            </span>
+                                            <span class="T2">_name</span>
+                                        </p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Fecha y hora de emisión</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_fecha_y_hora_de_emisión</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro5">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce6"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Método de pago</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_método_de_pago</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" rowspan="3" style="text-align:left;width:112.96pt; " class="ce7">
+                                        <p>_recipient_address</p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Forma de pago</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_forma_de_pago</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Moneda</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_moneda</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Tipo de cambio</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_tipo_de_cambio</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce7">
+                                        <p>
+                                            <span class="T1">Uso CFDI:</span>
+                                            <span
+                                                    class="T2">_cfdi_use
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Condiciones de pago</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_condiciones_de_pago</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce9">
+                                        <p>
+                                            <span class="T1">Numero registro ID tributario cliente:</span>
+                                            <span
+                                                    class="T2">_client_id
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>Versión de CFDI</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_versión_de_cfdi</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce9">
+                                        <p>
+                                            <span class="T1">Residencia Fiscal Cliente:</span>
+                                            <span
+                                                    class="T2">_client_country
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2">
+                                        <p>No. de cuenta de pago</p>
+                                    </td>
+                                    <td colspan="3" style="text-align:left;width:87.65pt; " class="ce15">
+                                        <p>_no._de_cuenta_de_pago</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td colspan="5" style="text-align:left;width:112.96pt; " class="ce6"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce16"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce16"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce16"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce3"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:81.44pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:61.09pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce2"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce18"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce3"> </td>
+                                </tr>
+                                <tr class="ro6">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce10">
+                                        <p>Clave producto/servicio</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce10">
+                                        <p>Clave unidad</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce10">
+                                        <p>Unidad</p>
+                                    </td>
+                                    <td style="text-align:left;width:81.44pt; " class="ce10">
+                                        <p>No Identificación</p>
+                                    </td>
+                                    <td style="text-align:left;width:61.09pt; " class="ce10">
+                                        <p>Cantidad</p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce10">
+                                        <p>Descripción del producto</p>
+                                    </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce10">
+                                        <p>Descuento</p>
+                                    </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce10">
+                                        <p>Valor unitario</p>
+                                    </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce10">
+                                        <p>Importe</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce1">
+                                        <p>_k_p_s</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1">
+                                        <p>_k_u</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1">
+                                        <p>_unit</p>
+                                    </td>
+                                    <td style="text-align:left;width:81.44pt; " class="ce1">
+                                        <p>_no_id</p>
+                                    </td>
+                                    <td style="text-align:left;width:61.09pt; " class="ce1">
+                                        <p>_cant</p>
+                                    </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce1">
+                                        <p>_descript</p>
+                                    </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1">
+                                        <p>_descount</p>
+                                    </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1">
+                                        <p>_unit_val</p>
+                                    </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce18">
+                                        <p>_amount</p>
+                                    </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:81.44pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:61.09pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce18"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                                <tr class="ro1">
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:112.96pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:81.44pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:61.09pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:254.95pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce1"> </td>
+                                    <td style="text-align:left;width:87.65pt; " class="ce18"> </td>
+                                    <td style="text-align:left;width:49.41pt; " class="ce1"> </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

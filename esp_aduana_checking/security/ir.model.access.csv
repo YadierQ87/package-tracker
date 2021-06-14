@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_aduana_package_checking,aduana.package.checking,model_aduana_package_checking,base.group_user,1,1,1,1
+access_aduana_envoy_checking,aduana.envoy.checking,model_aduana_envoy_checking,base.group_user,1,1,1,1

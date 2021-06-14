@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- #3(HBL de Carga Transcargo)-->
+        <template id="esp_cmp_report_container_hbl">
+            <field name="header_spacing">2</field>
+            <t t-foreach="docs" t-as="c">
+                <t t-foreach="c.envoys_total_ids" t-as="t">
+                    <t t-foreach="t.envoy_ids" t-as="e">
+                        <t t-foreach="e.packages_ids" t-as="docs">
+                            <t t-call="esp_componedor_paquetes.esp_cmp_report_hbl_embarque_carga"/>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

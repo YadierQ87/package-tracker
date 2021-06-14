@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Menu items -->
+        <menuitem id="menu_home" name="Componedor de paquetes" sequence="1"/>
+        <!--Menu Principal-->
+        <menuitem id="menu_admin" name="Envio"
+                  parent="esp_componedor_paquetes.menu_home"
+                  sequence="10" />
+        <!--Va a la pantalla Prenvio Principal-->
+        <menuitem id="menu_reservar_envios_admin" name="Reservar Embarque"
+                  parent="esp_componedor_paquetes.menu_admin"
+                  action="esp_componedor_paquetes.cmp_reservation_container_form_actions"
+                  sequence="8" />
+
+        <menuitem id="menu_pre_envios_admin" name="Venta de Envios"
+                  parent="esp_componedor_paquetes.menu_admin"
+                  action="esp_componedor_paquetes.cmp_pre_envoy_form_actions"
+                  sequence="10" />
+
+        <menuitem id="menu_envios_admin" name="Listado de Envios"
+                  parent="esp_componedor_paquetes.menu_admin"
+                  action="esp_componedor_paquetes.cmp_envoy_form_actions"
+                  sequence="11" />
+
+        <menuitem id="menu_paquetes_admin" name="Paquetes"
+                  parent="esp_componedor_paquetes.menu_admin"
+                  action="esp_componedor_paquetes.cmp_package_items_form_actions"
+                  sequence="12" />
+        <!--Nomencladores solo administradores-->
+        <menuitem id="menu_configuracion" name="Configuracion"
+                  parent="esp_componedor_paquetes.menu_home"
+                  sequence="20"/>
+        <menuitem id="menu_reglas_aduana" name="Reglas Aduana"
+                  parent="esp_componedor_paquetes.menu_configuracion"
+                  sequence="21" action="esp_componedor_paquetes.cmp_sorter_rule_form_actions"/>
+
+        <menuitem id="menu_categoria_articulos" name="Categoria de Articulos"
+                  parent="esp_componedor_paquetes.menu_configuracion"
+                  sequence="22" action="esp_componedor_paquetes.cmp_category_item_form_actions"/>
+        <!-- Configuracion Aduanal -->
+        <menuitem id="menu_fracciones_arancelarias" name="Fracciones Arancelarias"
+                  parent="esp_componedor_paquetes.menu_configuracion"
+                  sequence="23" action="esp_componedor_paquetes.cmp_fraccion_arancelaria_form_actions"/>
+        <!-- Van en el Menu de  Configuracion Inventario -->
+        <menuitem id="menu_marcas_productos" name="Marcas de Productos"
+                  parent="stock.menu_product_in_config_stock"
+                  sequence="6" action="esp_componedor_paquetes.cmp_product_brand_form_actions"/>
+
+        <menuitem id="menu_modelos_marcas_productos" name="Modelos de las Marcas"
+                  parent="stock.menu_product_in_config_stock"
+                  sequence="8" action="esp_componedor_paquetes.cmp_product_model_form_actions"/>
+
+    </data>
+</odoo>

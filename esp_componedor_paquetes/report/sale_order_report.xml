@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="new_package_report_saleorder_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout" >
+                        <style>
+                            .table th, .table td{
+                            padding: 0 1px 1px 5px !important;
+                            }
+                        </style>
+                        <div class="page card container" style="margin-top:-30px;" >
+                            <div class="row mt32 mb32" id="informations">
+                                <div class="col-auto mw-100 mb-2">
+                                    <strong>No. Envio:</strong>
+                                    <p t-field="o.name"/>
+                                </div>
+                                <div class="col-auto mw-100 mb-2">
+                                    <strong>Fecha Registro:</strong>
+                                    <p class="m-0" t-field="o.create_date" t-options='{"widget": "date"}'/>
+                                </div>
+                                <div class="col-auto mw-100 mb-2">
+                                    <strong>Vendedor:</strong>
+                                    <p class="m-0" t-field="o.create_uid"/>
+                                </div>
+                                <div class="col-auto mw-100 mb-2">
+                                    <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo" height="80px"/>
+                                </div>
+                                <div class="col-auto mw-100 mb-2">
+                                    <div class="company_address" t-attf-class="float-right">
+                                        <div>
+                                            <strong t-field="res_company.partner_id.name"/>
+                                        </div>
+                                        <span t-field="res_company.partner_id"
+                                              t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table class="table table-bordered table-striped" style="margin-top:-25px;">
+                                <theader>
+                                    <tr class="">
+                                        <th class="text-left">No. Envio</th>
+                                        <th class="text-left">Cantd</th>
+                                        <th class="text-left">Precio</th>
+                                    </tr>
+                                </theader>
+                                <tbody>
+                                    <!-- Los Envios  -->
+                                    <t t-foreach="o.envoy_ids" t-as="envoy" >
+                                        <tr class="bg-200">
+                                            <td class="text-left"><strong t-field="envoy.name"></strong></td>
+                                            <td class="text-center"> <span t-field="envoy.package_quantity"/> packs </td>
+                                            <td class="text-center"></td>
+                                        </tr>
+                                        <!-- Los paquetes -->
+                                        <t t-foreach="envoy.packages_ids" t-as="package">
+                                            <tr class="bg-100">
+                                                <td class="text-center">
+                                                    <strong>Paquete:</strong>
+                                                    <span t-field="package.name"/>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span t-field="package.weight"/> (kg)
+                                                </td>
+                                                <td class="text-center">
+                                                    <span t-field="package.price_neto" t-field-options='{"widget": "monetary"}' />$ x pack
+                                                </td>
+                                            </tr>
+                                            <!-- Los articulos -->
+                                            <t t-foreach="package.sale_item_ids" t-as="sale_item">
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <span t-field="sale_item.item_id.name"/>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span t-field="sale_item.quantity"/> Unit
+                                                    </td>
+                                                    <td class="text-center"></td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </tbody>
+                                <tfooter>
+                                    <tr>
+                                        <td class="text-right"><strong>Totales</strong></td>
+                                        <td class="text-center">Env:(<strong t-field="o.envoy"/>) - Paq:(<strong t-field="o.packages"/>) </td>
+                                        <td class="text-center">$<span t-field="o.cost" t-field-options='{"widget": "monetary"}' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>_________________________</td>
+                                        <td colspan="2"> Nombre Vendedor: <span t-field="o.create_uid"/> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Pie de Firma </td>
+                                        <td colspan="2"> Cuño </td>
+                                    </tr>
+                                </tfooter>
+                            </table>
+                        </div>
+                        <div t-attf-class="o_company_#{res_company.id}_layout footer o_background_footer">
+                            <div class="text-center">
+                                <ul class="list-inline">
+                                    <li t-if="res_company.phone" class="list-inline-item"><i class="fa fa-phone" role="img" aria-label="Phone" title="Phone"/> <span t-field="res_company.phone"/></li>
+                                    <li t-if="res_company.email" class="list-inline-item"><i class="fa fa-at" role="img" aria-label="Email" title="Email"/> <span t-field="res_company.email"/></li>
+                                    <li t-if="res_company.website" class="list-inline-item"><i class="fa fa-globe" role="img" aria-label="Website" title="Website"/> <span t-field="res_company.website"/></li>
+                                    <li t-if="res_company.vat" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Fiscal number"/><t t-esc="res_company.country_id.vat_label or 'Tax ID'"/>: <span t-field="res_company.vat"/></li>
+                                </ul>
+                                <div t-if="report_type == 'pdf'" class="text-muted">
+                                    Page:
+                                    <span class="page"/>
+                                    of
+                                    <span class="topage"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

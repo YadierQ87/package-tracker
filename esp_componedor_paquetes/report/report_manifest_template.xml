@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- #2(Manifiesto de Carga)-->
+        <template id="esp_cmp_report_manifiesto_carga">
+            <t t-call="web.basic_layout"> <!-- #html_container con el logo -->
+                <style>
+                    th.center{  font-weigth:bold; }
+                    .table-bordered td,.table-bordered tr,.table-bordered th
+                    { border: solid 1px #222 !important; padding:2px; }
+                    table {}
+                    .page{position: absolute;
+                    top: 0;}
+                </style>
+                <div class="page">
+                    <t t-foreach="docs" t-as="c">
+                        <table>
+                            <tr>
+                                <td>Agencia origen:</td>
+                                <td>
+                                    <span t-esc="res_company.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pais:</td>
+                                <td>
+                                    <span t-esc="c.shipment_origin.country_id.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Consignatario:</td>
+                                <td>
+                                    <span t-esc="c.forwarder.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Contenedor No:</td>
+                                <td><span t-esc="c.no_contenedor"/></td>
+                            </tr>
+                            <tr>
+                                <td>Fecha:</td>
+                                <td>
+                                    <span t-esc="c.real_shipping_date"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Buque/Viaje:</td>
+                                <td><span t-esc="c.trip_number"/></td>
+                            </tr>
+                            <tr>
+                                <td>MBL No.:</td>
+                                <td><span t-esc="c.hbl_bl_code"/></td>
+                            </tr>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" id="Manifiesto"
+                               class="table table-bordered table-hover">
+                            <tr>
+                                <th>
+                                    <strong>HBL Numero</strong>
+                                </th>
+                                <th>
+                                    <strong>Bultos (Cant.)</strong>
+                                </th>
+                                <th>
+                                    <strong>Peso (Kg)</strong>
+                                </th>
+                                <th>
+                                    <strong>M3</strong>
+                                </th>
+                                <th>
+                                    <strong>Nombre y Apellidos del REMITENTE:</strong>
+                                </th>
+                                <th>
+                                    <strong>Nombre y Apellidos del DESTINATARIO:</strong>
+                                </th>
+                                <th>
+                                    <strong>Direccion del DESTINATARIO:</strong>
+                                </th>
+                                <th>
+                                    <strong>Telefono del DESTINATARIO</strong>
+                                </th>
+                                <th>
+                                    <strong>No. de Carnet de Identidad:</strong>
+                                </th>
+                                <th>
+                                    <strong>Pasaporte</strong>
+                                </th>
+                                <th>
+                                    <strong>Contenido del paquete (Descripcion)</strong>
+                                </th>
+                                <th>
+                                    <strong>Categoria/Operacion</strong>
+                                </th>
+                            </tr>
+                            <!-- empieza el ciclo for -->
+                            <t t-set="itotal_bultos" t-value="0"/>
+                            <t t-set="itotal_kg" t-value="0"/>
+                            <t t-set="itotal_m3" t-value="0"/>
+
+                            <t t-foreach="c.envoys_total_ids" t-as="t">
+                                <t t-foreach="t.envoy_ids" t-as="e">
+                                    <t t-foreach="e.packages_ids" t-as="package">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="package.hbl_header"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.bags"/>
+                                                <t t-set="itotal_bultos" t-value="itotal_bultos + package.bags"/>
+                                            </td>
+                                            <td>
+                                                <!--t t-esc="package.weight"/-->
+                                                <t t-set="itotal_kg" t-value="itotal_kg + package.weight"/>
+                                                1.5(Kg)
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.volume"/>
+                                                <t t-set="itotal_m3" t-value="itotal_m3 + package.volume"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.sender.name"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.destination.name"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.destination.full_address"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.destination.phone"/>
+                                                <t t-esc="package.destination.mobile"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.destination.ci"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.destination.passport"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.container_id.container_data"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="package.sorting_rule_id.name"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </t>
+                            <tr>
+                                <td>
+                                    <div>total</div>
+                                </td>
+                                <td>
+                                    <div><span t-esc="itotal_bultos"/> </div>
+                                </td>
+                                <td>
+                                    <div><span t-esc="'%.2f'%itotal_kg"/></div>
+                                </td>
+                                <td>
+                                    <div><span t-esc="'%.2f'%itotal_m3"/></div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                                <td>
+                                    <div>-</div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </t>
+                    <!-- termina el for -->
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
